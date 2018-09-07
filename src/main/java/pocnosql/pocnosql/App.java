@@ -17,17 +17,17 @@ public class App {
 	public static void main(String[] args) {
 		try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-//			Instance<UsuarioRepository> instance = container.select(UsuarioRepository.class,
-//					DatabaseQualifier.ofKeyValue());
+			Instance<UsuarioRepository> instance = container.select(UsuarioRepository.class,
+					DatabaseQualifier.ofKeyValue());
 
-//			UsuarioRepository usuarioRepository = instance.get();
+			UsuarioRepository usuarioRepository = instance.get();
 
 			KeyValueTemplate template = container.select(KeyValueTemplate.class).get();
 			Usuario usuario = new Usuario();
 			usuario.setEmail("paula234@teste.com");
 			usuario.setNome("Paula");
 			template.put(usuario);
-//			usuarioRepository.save(usuario);
+			usuarioRepository.save(usuario);
 
 		}
 	}

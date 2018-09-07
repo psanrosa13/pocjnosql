@@ -11,22 +11,23 @@ import org.jnosql.diana.redis.key.RedisConfiguration;
 
 @ApplicationScoped
 public class Gerenciador {
-	private static final String BUCKET = "developers";
 
-	private KeyValueConfiguration<?> configuration;
+    private static final String BUCKET = "developers";
 
-	private BucketManagerFactory<?> managerFactory;
+    private KeyValueConfiguration<?> configuration;
 
-	@PostConstruct
-	public void init() {
-		configuration = new RedisConfiguration();
-		managerFactory = configuration.get();
-	}
+    private BucketManagerFactory<?> managerFactory;
 
-	@Produces
-	public BucketManager getManager() {
-		System.out.println(" passando aqui");
-		return managerFactory.getBucketManager(BUCKET);
-	}
+    @PostConstruct
+    public void init() {
+        configuration = new RedisConfiguration();
+        managerFactory = configuration.get();
+    }
+
+    @Produces
+    public BucketManager getManager() {
+        System.out.println(" passando aqui");
+        return managerFactory.getBucketManager(BUCKET);
+    }
 
 }
